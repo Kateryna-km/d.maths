@@ -1,0 +1,88 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+int main()
+{
+    int i=0,j=0,n=0,m=0, ab=1, ba=1, s=1, k=0;
+    char a[1000], b[1000], c[1000], d[1000];
+    char symv='a';
+    printf("Input n\n");
+    scanf("%d",&n);
+
+    printf("input array 1\n");
+    for (i=0; i<n; i++)
+    {
+        if (getchar()!=31)
+            a[i] = getchar();
+    }
+
+    printf("Input array 2\n");
+    for (j=0; j<n; j++)
+    {
+        if (getchar()!=31)
+            b[j] = getchar();
+    }
+
+    printf("A\\B: ");
+    for (i=0; i<n; i++)
+    {
+        for (j=0; j<n; j++)
+        {
+            if (a[i]!=b[j])
+                ab*=1;
+            else
+                ab*=0;
+        }
+        if (ab==1)
+            printf("%c ",a[i]);
+        ab=1;
+    }
+
+    printf("\nB\\A: ");
+    for (i=0; i<n; i++)
+    {
+        for (j=0; j<n; j++)
+        {
+            if (b[i]!=a[j])
+                ba*=1;
+            else
+                ba*=0;
+        }
+        if (ba==1)
+            printf("%c ",b[i]);
+        ba=1;
+    }
+
+    printf("\n-A: ");
+    for (j=0; j<26; j++)
+    {
+        for (i=0; i<n; i++)
+        {
+            if (symv!=a[i])
+                s*=1;
+            else s*=0;
+        }
+        if (s==1)
+            printf("%c ", symv);
+        s=1;
+        symv++;
+    }
+
+    symv='a'; s=1;
+    printf("\n-B: ");
+    for (j=0; j<26; j++)
+    {
+        for (i=0; i<n; i++)
+        {
+            if (symv!=b[i])
+                s*=1;
+            else s*=0;
+        }
+        if (s==1)
+            printf("%c ", symv);
+        s=1;
+        symv++;
+    }
+    return 0;
+}
